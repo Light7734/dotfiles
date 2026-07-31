@@ -2,7 +2,7 @@
 require("_options")
 require("_keymaps")
 require("_plugins")
--- 
+--
 -- Editing
 require("_lsp")
 require("_cmp")
@@ -18,11 +18,12 @@ require("_lualine")
 require("_gitsigns")
 require("_indentline")
 require("_treesitter")
+require("_todo_comments")
 require("_gruvbox")
 
-vim.filetype.add({
-  extension = {
-    tpp = "cpp"
-  },
-})
 
+vim.filetype.add({
+    extension = {
+        tpp = "cpp"
+    },
+})

@@ -1,13 +1,12 @@
 local opts = { noremap = true, silent = true }
-local term_opts = { silent = true }
 local keymap = vim.api.nvim_set_keymap
 
 -- Set leader to space
-keymap("", "<Space>", "<Nop>", opts)
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
-keymap("n", "<leader>e", "<cmd>NvimTreeToggle<cr>", opts)
+vim.keymap.set("n", "<leader>e", "<cmd>NvimTreeToggle<cr>", opts)
+vim.keymap.set("n", "<leader>q", vim.diagnostic.setloclist, opts)
 
 -- Old config...
 
@@ -49,21 +48,27 @@ keymap("n", "<leader>pr", "<cmd>write<cr><cmd>FormatWithPrettier<cr>", opts)
 --   term_mode = "t",
 --   command_mode = "c",
 
-keymap("n", "<C-h>", "<C-w>h", opts)
-keymap("n", "<C-j>", "<C-w>j", opts)
-keymap("n", "<C-k>", "<C-w>k", opts)
-keymap("n", "<C-l>", "<C-w>l", opts)
-keymap("n", "<C-c>", "<CMD>%bd|e#|bd#<CR>", opts)
 
+vim.keymap.set('n', '<C-h>', '<C-w><C-h>', { desc = 'Move focus to the left window' })
+vim.keymap.set('n', '<C-l>', '<C-w><C-l>', { desc = 'Move focus to the right window' })
+vim.keymap.set('n', '<C-j>', '<C-w><C-j>', { desc = 'Move focus to the lower window' })
+vim.keymap.set('n', '<C-k>', '<C-w><C-k>', { desc = 'Move focus to the upper window' })
+vim.keymap.set('n', '<C-c>', '<CMD>%bd|e#|bd#<CR>', { desc = 'Nuke all buffer except the current one' })
 
-keymap("n", "<C-Up>", ":resize +2<CR>", opts)
-keymap("n", "<C-Down>", ":resize -2<CR>", opts)
-keymap("n", "<C-Left>", ":vertical resize -2<CR>", opts)
-keymap("n", "<C-Right>", ":vertical resize +2<CR>", opts)
+vim.keymap.set('n', '<C-Up>', ':resize +2<CR>', { desc = 'Increase height of the current window' })
+vim.keymap.set('n', '<C-Down>', ':resize -2<CR>', { desc = 'Decrease height of the current window' })
+vim.keymap.set('n', '<C-Left>', ':vertical resize -2<CR>', { desc = 'Increase height of the current window' })
+vim.keymap.set('n', '<C-Right>', ':vertical resize +2<CR>', { desc = 'Decreaseh eight of the current window' })
 
 -- Navigate buffers
 keymap("n", "<S-l>", ":bnext<CR>", opts)
 keymap("n", "<S-h>", ":bprevious<CR>", opts)
+
+vim.api.nvim_create_autocmd('TextYankPost', {
+    desc = 'Highlight when yanking (copying) text',
+    group = vim.api.nvim_create_augroup('kickstart-highlight-yank', { clear = true }),
+    callback = function() vim.hl.on_yank() end,
+})
 
 -- Visual --
 -- Stay in indent mode
@@ -93,50 +98,3 @@ keymap("n", "<leader>tg", "<cmd>Telescope live_grep<cr>", opts)
 
 vim.api.nvim_set_keymap("n", "<leader>w", "<cmd>lua vim.lsp.buf.format({async = false})<cr><cmd>w!<cr>", opts)
 keymap("n", "<leader>c", "<cmd>bdelete<cr>", opts)
-
-keymap(
-    "n",
-    "<A-]>",
-    [[<cmd>set so=999<cr> <cmd>/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/<cr>jjj^0 <cmd>nohl<cr> <cmd>set so=6<cr>]],
-    opts
-)
-
-keymap(
-    "n",
-    "<A-[>",
-    [[<cmd>set so=999<cr> <cmd>?\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/<cr>nnjjj^0 <cmd>nohl<cr> <cmd>set so=6<cr>]],
-    opts
-)
-
-vim.g.font_size = 10
-vim.o.guifont = "JetbrainsMono Nerd Font:h" .. vim.g.font_size
-
-keymap("n", "<C-e>", "5<C-e>", opts)
-
-vim.keymap.set(
-    "n",
-    "<C-_>",
-    [[<cmd>lua vim.g.font_size = vim.g.font_size - 1<CR><cmd>lua vim.o.guifont='JetbrainsMono Nerd Font:h'..vim.g.font_size<CR>]]
-)
-
-vim.keymap.set(
-    "n",
-    "<C-+>",
-    [[<cmd>lua vim.g.font_size = vim.g.font_size + 1<CR><cmd>lua vim.o.guifont='JetbrainsMono Nerd Font:h'..vim.g.font_size<CR>]]
-)
-keymap("n", "\\", "<cmd>ToggleTerm<cr>", opts)
-keymap("t", "<leader>\\", "<cmd>ToggleTerm<cr>", opts)
-
-vim.api.nvim_set_keymap(
-    "v",
-    "<leader>re",
-    [[ <Esc><Cmd>lua require('refactoring').refactor('Extract Function')<CR>]],
-    { noremap = true, silent = true, expr = false }
-)
-
-vim.api.nvim_set_keymap(
-    "v",
-    "<leader>rf",
-    [[ <Esc><Cmd>lua require('refactoring').refactor('Extract Function To File')<CR>]],
-    { noremap = true, silent = true, expr = false }
-)
