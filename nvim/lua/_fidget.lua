@@ -1,0 +1,7 @@
+-- local status_ok, fidget = pcall(require, "fidget")
+-- if not status_ok then
+--     print("Failed to require fidget")
+--     return
+-- end
+--
+-- fidget.setup {}

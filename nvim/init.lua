@@ -5,8 +5,8 @@ require("_plugins")
 --
 -- Editing
 require("_lsp")
-require("_cmp")
-require("_autopairs")
+-- require("_cmp")
+-- require("_autopairs")
 --
 -- -- Navigation
 require("_telescope")
@@ -20,10 +20,5 @@ require("_indentline")
 require("_treesitter")
 require("_todo_comments")
 require("_gruvbox")
-
-
-vim.filetype.add({
-    extension = {
-        tpp = "cpp"
-    },
-})
+require("_mini")
+-- require("_fidget")

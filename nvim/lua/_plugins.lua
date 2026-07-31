@@ -7,18 +7,19 @@ vim.pack.add({
 
     -- Navigation
     { src = gh 'kyazdani42/nvim-tree.lua' },
+
     { src = gh 'nvim-telescope/telescope.nvim' },
-    { src = gh 'slarwise/telescope-args.nvim' },
+    { src = gh 'nvim-telescope/telescope-ui-select.nvim' },
 
     -- Aesthetics
     { src = gh 'lukas-reineke/indent-blankline.nvim' },
     { src = gh 'nvim-treesitter/nvim-treesitter' },
-    { src = gh 'kyazdani42/nvim-web-devicons' },
     { src = gh 'nvim-lualine/lualine.nvim' },
     { src = gh 'ellisonleao/gruvbox.nvim' },
     { src = gh 'lewis6991/gitsigns.nvim' },
     { src = gh 'goolord/alpha-nvim' },
     { src = gh 'folke/todo-comments.nvim' },
+    { src = gh 'j-hui/fidget.nvim' },
 
     -- Completion
     { src = gh 'hrsh7th/nvim-cmp' },
@@ -33,6 +34,9 @@ vim.pack.add({
 
     -- LSP
     { src = gh 'neovim/nvim-lspconfig' },
+    { src = gh 'mason-org/mason.nvim' },
+    { src = gh 'mason-org/mason-lspconfig.nvim' },
+    { src = gh 'WhoIsSethDaniel/mason-tool-installer.nvim' },
 })
 
 -- require("_plugins_bootstrap")

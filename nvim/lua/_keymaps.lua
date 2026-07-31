@@ -80,21 +80,5 @@ keymap("v", "p", '"_dP', opts)
 keymap("x", "<C-j>", ":move '>+1<CR>gv-gv", opts)
 keymap("x", "<C-k>", ":move '<-2<CR>gv-gv", opts)
 
-keymap(
-    "n",
-    "<leader>tm",
-    "<cmd>lua require 'telescope.builtin'.lsp_document_symbols({ symbols = { 'method', 'function' } })<cr>",
-    opts
-)
-
-keymap(
-    "n",
-    "<leader>f",
-    "<cmd>lua require'telescope.builtin'.find_files(require('telescope.themes').get_dropdown({ previewer = false }))<cr>",
-    opts
-)
-keymap("n", "<leader>tg", "<cmd>Telescope live_grep<cr>", opts)
-
-
 vim.api.nvim_set_keymap("n", "<leader>w", "<cmd>lua vim.lsp.buf.format({async = false})<cr><cmd>w!<cr>", opts)
 keymap("n", "<leader>c", "<cmd>bdelete<cr>", opts)
