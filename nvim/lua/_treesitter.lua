@@ -18,61 +18,61 @@ configs.setup({
 	},
 })
 
-vim.api.nvim_create_autocmd('FileType', {
-  pattern = {
-    -- C/C++
-    'c',
-    'cpp',
-    'cuda',
-    'hpp',
-    'cppm',
+vim.api.nvim_create_autocmd("FileType", {
+	pattern = {
+		-- C/C++
+		"c",
+		"cpp",
+		"cuda",
+		"hpp",
+		"cppm",
 
-    -- Lua
-    'lua',
-    'luadoc',
+		-- Lua
+		"lua",
+		"luadoc",
 
-    -- CMake
-    'cmake',
+		-- CMake
+		"cmake",
 
-    -- Shell
-    'sh',
-    'bash',
-    'zsh',
-    'fish',
+		-- Shell
+		"sh",
+		"bash",
+		"zsh",
+		"fish",
 
-    -- Git
-    'gitcommit',
-    'gitrebase',
-    'gitignore',
-    'gitattributes',
-    'gitconfig',
+		-- Git
+		"gitcommit",
+		"gitrebase",
+		"gitignore",
+		"gitattributes",
+		"gitconfig",
 
-    -- YAML
-    'yaml',
+		-- YAML
+		"yaml",
 
-    -- JSON
-    'json',
-    'jsonc',
+		-- JSON
+		"json",
+		"jsonc",
 
-    -- TOML
-    'toml',
+		-- TOML
+		"toml",
 
-    -- Config files
-    'ini',
-    'dosini',
+		-- Config files
+		"ini",
+		"dosini",
 
-    -- Markdown
-    'markdown',
-    'markdown_inline',
+		-- Markdown
+		"markdown",
+		"markdown_inline",
 
-    -- Misc
-    'regex',
-    'query', -- treesitter queries
+		-- Misc
+		"regex",
+		"query", -- treesitter queries
 
-    'svelte',
-    'typescript',
-  },
-  callback = function()
-    vim.treesitter.start()
-  end,
+		"svelte",
+		"typescript",
+	},
+	callback = function()
+		vim.treesitter.start()
+	end,
 })

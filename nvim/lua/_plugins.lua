@@ -1,42 +1,44 @@
-local function gh(repo) return 'https://github.com/' .. repo end
+local function gh(repo)
+	return "https://github.com/" .. repo
+end
 
 vim.pack.add({
-    -- Core
-    { src = gh 'nvim-lua/plenary.nvim' },
-    { src = gh 'nvim-mini/mini.nvim' },
+	-- Core
+	{ src = gh("nvim-lua/plenary.nvim") },
+	{ src = gh("nvim-mini/mini.nvim") },
 
-    -- Navigation
-    { src = gh 'kyazdani42/nvim-tree.lua' },
+	-- Navigation
+	{ src = gh("kyazdani42/nvim-tree.lua") },
 
-    { src = gh 'nvim-telescope/telescope.nvim' },
-    { src = gh 'nvim-telescope/telescope-ui-select.nvim' },
+	{ src = gh("nvim-telescope/telescope.nvim") },
+	{ src = gh("nvim-telescope/telescope-ui-select.nvim") },
 
-    -- Aesthetics
-    { src = gh 'lukas-reineke/indent-blankline.nvim' },
-    { src = gh 'nvim-treesitter/nvim-treesitter' },
-    { src = gh 'nvim-lualine/lualine.nvim' },
-    { src = gh 'ellisonleao/gruvbox.nvim' },
-    { src = gh 'lewis6991/gitsigns.nvim' },
-    { src = gh 'goolord/alpha-nvim' },
-    { src = gh 'folke/todo-comments.nvim' },
-    { src = gh 'j-hui/fidget.nvim' },
+	-- Aesthetics
+	{ src = gh("lukas-reineke/indent-blankline.nvim") },
+	{ src = gh("nvim-treesitter/nvim-treesitter") },
+	{ src = gh("nvim-lualine/lualine.nvim") },
+	{ src = gh("ellisonleao/gruvbox.nvim") },
+	{ src = gh("lewis6991/gitsigns.nvim") },
+	{ src = gh("goolord/alpha-nvim") },
+	{ src = gh("folke/todo-comments.nvim") },
+	{ src = gh("j-hui/fidget.nvim") },
 
-    -- Completion
-    { src = gh 'hrsh7th/nvim-cmp' },
-    { src = gh 'hrsh7th/cmp-nvim-lsp' },
-    { src = gh 'hrsh7th/cmp-nvim-lua' },
-    { src = gh 'hrsh7th/cmp-buffer' },
-    { src = gh 'hrsh7th/cmp-path' },
-    { src = gh 'hrsh7th/cmp-cmdline' },
-    { src = gh 'saadparwaiz1/cmp_luasnip' },
-    { src = gh 'windwp/nvim-autopairs' },
-    { src = gh 'L3MON4D3/LuaSnip' },
+	-- Completion
+	{ src = gh("hrsh7th/nvim-cmp") },
+	{ src = gh("hrsh7th/cmp-nvim-lsp") },
+	{ src = gh("hrsh7th/cmp-nvim-lua") },
+	{ src = gh("hrsh7th/cmp-buffer") },
+	{ src = gh("hrsh7th/cmp-path") },
+	{ src = gh("hrsh7th/cmp-cmdline") },
+	{ src = gh("saadparwaiz1/cmp_luasnip") },
+	{ src = gh("windwp/nvim-autopairs") },
+	{ src = gh("L3MON4D3/LuaSnip") },
 
-    -- LSP
-    { src = gh 'neovim/nvim-lspconfig' },
-    { src = gh 'mason-org/mason.nvim' },
-    { src = gh 'mason-org/mason-lspconfig.nvim' },
-    { src = gh 'WhoIsSethDaniel/mason-tool-installer.nvim' },
+	-- LSP
+	{ src = gh("neovim/nvim-lspconfig") },
+	{ src = gh("mason-org/mason.nvim") },
+	{ src = gh("mason-org/mason-lspconfig.nvim") },
+	{ src = gh("WhoIsSethDaniel/mason-tool-installer.nvim") },
 })
 
 -- require("_plugins_bootstrap")
