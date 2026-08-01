@@ -69,7 +69,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
 		-- When you move your cursor, the highlights will be cleared (the second autocommand).
 		local client = vim.lsp.get_client_by_id(event.data.client_id)
 		if client and client:supports_method("textDocument/documentHighlight", event.buf) then
-			local highlight_augroup = vim.api.nvim_create_augroup("kickstart-lsp-highlight", { clear = false })
+			local highlight_augroup = vim.api.nvim_create_augroup("custom-lsp-highlight", { clear = false })
 			vim.api.nvim_create_autocmd({ "CursorHold", "CursorHoldI" }, {
 				buffer = event.buf,
 				group = highlight_augroup,
@@ -103,6 +103,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
 	end,
 })
 
+local schemastore = require("schemastore")
 -- Enable the following language servers
 --  Feel free to add/remove any LSPs that you want here. They will automatically be installed.
 --  See `:help lsp-config` for information about keys and how to configure
@@ -118,6 +119,28 @@ local servers = {
 	["bash-language-server"] = {},
 	ts_ls = {}, -- TODO: read https://github.com/pmizio/typescript-tools.nvim
 	stylua = {}, -- Used to format Lua code
+	jsonls = {
+		settings = {
+			json = {
+				schemas = schemastore.json.schemas(),
+				validate = { enable = true },
+			},
+		},
+	},
+	yamlls = {
+		settings = {
+			yaml = {
+				schemaStore = {
+					-- You must disable built-in schemaStore support if you want to use
+					-- this plugin and its advanced options like `ignore`.
+					enable = false,
+					-- Avoid TypeError: Cannot read properties of undefined (reading 'length')
+					url = "",
+				},
+				schemas = require("schemastore").yaml.schemas(),
+			},
+		},
+	},
 	-- Special Lua Config, as recommended by neovim help docs
 	lua_ls = {
 		on_init = function(client)

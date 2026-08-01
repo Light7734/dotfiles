@@ -2,17 +2,19 @@
 require("_options")
 require("_keymaps")
 require("_plugins")
---
+
 -- Editing
 require("_lsp")
--- require("_cmp")
--- require("_autopairs")
---
--- -- Navigation
+require("_conform")
+require("_blink")
+require("_snippets")
+require("_autopairs")
+
+-- Navigation
 require("_telescope")
 require("_nvim_tree")
---
--- -- Aesthetics
+
+-- Aesthetics
 require("_alpha")
 require("_lualine")
 require("_gitsigns")
