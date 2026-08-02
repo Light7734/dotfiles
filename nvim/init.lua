@@ -12,14 +12,15 @@ require("_autopairs")
 
 -- Navigation
 require("_telescope")
-require("_nvim_tree")
+-- require("_nvim_tree")
+require("_neo_tree")
 
 -- Aesthetics
 require("_alpha")
 require("_lualine")
 require("_gitsigns")
-require("_indentline")
 require("_treesitter")
+require("_indentline")
 require("_todo_comments")
 require("_gruvbox")
 require("_mini")

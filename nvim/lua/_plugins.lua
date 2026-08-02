@@ -6,10 +6,10 @@ vim.pack.add({
 	-- Core
 	{ src = gh("nvim-lua/plenary.nvim") },
 	{ src = gh("nvim-mini/mini.nvim") },
+	{ src = gh("MunifTanjim/nui.nvim") },
 
 	-- Navigation
-	{ src = gh("kyazdani42/nvim-tree.lua") },
-
+	{ src = gh("nvim-neo-tree/neo-tree.nvim") },
 	{ src = gh("nvim-telescope/telescope.nvim") },
 	{ src = gh("nvim-telescope/telescope-ui-select.nvim") },
 

@@ -5,7 +5,10 @@ local keymap = vim.api.nvim_set_keymap
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
-vim.keymap.set("n", "<leader>e", "<cmd>NvimTreeToggle<cr>", opts)
+vim.keymap.set("n", "<leader>e", "<cmd>Neotree toggle<CR>", {
+    desc = "Toggle Neo-tree",
+    silent = true,
+})
 vim.keymap.set("n", "<leader>q", vim.diagnostic.setloclist, opts)
 
 -- Old config...
@@ -13,19 +16,19 @@ vim.keymap.set("n", "<leader>q", vim.diagnostic.setloclist, opts)
 ZenActive = true
 
 local function toggle_zen()
-	if not ZenActive then
-		ZenActive = true
+    if not ZenActive then
+        ZenActive = true
 
-		vim.cmd("set nonumber")
-		vim.cmd("set norelativenumber")
-		vim.lsp.inlay_hint.enable(false)
-	else
-		ZenActive = false
+        vim.cmd("set nonumber")
+        vim.cmd("set norelativenumber")
+        vim.lsp.inlay_hint.enable(false)
+    else
+        ZenActive = false
 
-		vim.cmd("set relativenumber")
-		vim.cmd("set number")
-		vim.lsp.inlay_hint.enable(true)
-	end
+        vim.cmd("set relativenumber")
+        vim.cmd("set number")
+        vim.lsp.inlay_hint.enable(true)
+    end
 end
 
 vim.api.nvim_create_user_command("ToggleZen", toggle_zen, {})
@@ -34,8 +37,8 @@ keymap("n", "<C-q>", "<cmd>ToggleZen<cr>", opts)
 keymap("n", "<leader>h", "<cmd>nohl<cr>", opts)
 
 local function format_with_prettier()
-	vim.fn.system("pnpm exec prettier --write " .. vim.fn.expand("%:p"))
-	vim.cmd("edit") -- Reload the buffer after formatting
+    vim.fn.system("pnpm exec prettier --write " .. vim.fn.expand("%:p"))
+    vim.cmd("edit") -- Reload the buffer after formatting
 end
 vim.api.nvim_create_user_command("FormatWithPrettier", format_with_prettier, {})
 keymap("n", "<leader>pr", "<cmd>write<cr><cmd>FormatWithPrettier<cr>", opts)
@@ -64,11 +67,11 @@ keymap("n", "<S-l>", ":bnext<CR>", opts)
 keymap("n", "<S-h>", ":bprevious<CR>", opts)
 
 vim.api.nvim_create_autocmd("TextYankPost", {
-	desc = "Highlight when yanking (copying) text",
-	group = vim.api.nvim_create_augroup("kickstart-highlight-yank", { clear = true }),
-	callback = function()
-		vim.hl.on_yank()
-	end,
+    desc = "Highlight when yanking (copying) text",
+    group = vim.api.nvim_create_augroup("kickstart-highlight-yank", { clear = true }),
+    callback = function()
+        vim.hl.on_yank()
+    end,
 })
 
 -- Visual --
