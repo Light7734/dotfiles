@@ -100,6 +100,10 @@
     "todo-comments.nvim": {
       "rev": "31e3c38ce9b29781e4422fc0322eb0a21f4e8668",
       "src": "https://github.com/folke/todo-comments.nvim"
+    },
+    "vim-illuminate": {
+      "rev": "91313e598ca62e110bc71535c49069b66b9883c9",
+      "src": "https://github.com/rrethy/vim-illuminate"
     }
   }
 }

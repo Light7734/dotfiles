@@ -12,7 +12,6 @@ require("_autopairs")
 
 -- Navigation
 require("_telescope")
--- require("_nvim_tree")
 require("_neo_tree")
 
 -- Aesthetics
@@ -24,4 +23,3 @@ require("_indentline")
 require("_todo_comments")
 require("_gruvbox")
 require("_mini")
--- require("_fidget")
