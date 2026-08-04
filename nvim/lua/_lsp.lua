@@ -1,9 +1,3 @@
-vim.filetype.add({
-	extension = {
-		svx = "markdown", -- Maps .svx to markdown for highlighting and formatting purposes
-	},
-})
-
 vim.diagnostic.config({
 	update_in_insert = false,
 	severity_sort = true,
@@ -116,7 +110,7 @@ local schemastore = require("schemastore")
 ---@type table<string, vim.lsp.Config>
 local servers = {
 	["bash-language-server"] = {},
-	["clangd"] = {},
+	["clangd"] = { cmd = { "/usr/bin/clangd" } }, -- Use system's clangd
 	["cmake-language-server"] = {},
 	["cmakelang"] = {},
 	["css-lsp"] = {},
