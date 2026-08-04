@@ -1,81 +1,76 @@
 local ok, neotree = pcall(require, "neo-tree")
 if not ok then
-    return
+	return
 end
 
 neotree.setup({
-    close_if_last_window = true,
-    enable_git_status = true,
-    enable_diagnostics = false,
+	close_if_last_window = true,
+	enable_git_status = true,
+	enable_diagnostics = true,
 
-    filesystem = {
-        bind_to_cwd = false,
-        follow_current_file = {
-            enabled = true,
-        },
-        hijack_netrw_behavior = "open_default",
+	filesystem = {
+		bind_to_cwd = false,
+		follow_current_file = {
+			enabled = true,
+		},
+		hijack_netrw_behavior = "open_default",
 
-        window = {
-            position = "right",
-            width = 36,
+		window = {
+			position = "left",
+			width = 28,
 
-            mappings = {
-                ["<C-t>"] = "navigate_up",
-                ["?"] = "show_help",
-            },
-        },
-    },
+			mappings = {
+				["<C-t>"] = "navigate_up",
+				["?"] = "show_help",
+			},
+		},
+	},
 
-    default_component_configs = {
-        container = {
-            enable_character_fade = true,
-        },
+	default_component_configs = {
+		container = {
+			enable_character_fade = true,
+		},
 
-        indent = {
-            with_expanders = true,
-            expander_collapsed = "",
-            expander_expanded = "",
-        },
+		indent = {
+			with_expanders = true,
+			expander_collapsed = "",
+			expander_expanded = "",
+		},
 
-        icon = {
-            default = "",
-            folder_closed = "",
-            folder_open = "",
-            folder_empty = "",
-            folder_empty_open = "",
-            folder_symlink = "",
-        },
+		icon = {
+			default = "",
+			folder_closed = "",
+			folder_open = "",
+			folder_empty = "",
+			folder_empty_open = "",
+			folder_symlink = "",
+		},
 
-        modified = {
-            symbol = "",
-        },
+		modified = {
+			symbol = "",
+		},
 
-        git_status = {
-            symbols = {
-                added     = "U",
-                modified  = "",
-                deleted   = "",
-                renamed   = "➜",
-                untracked = "U",
-                ignored   = "◌",
-                unstaged  = "",
-                staged    = "S",
-                conflict  = "",
-            },
-        },
+		git_status = {
+			symbols = {
+				added = "U",
+				modified = "",
+				deleted = "",
+				renamed = "➜",
+				untracked = "U",
+				ignored = "◌",
+				unstaged = "",
+				staged = "S",
+				conflict = "",
+			},
+		},
 
-        diagnostics = {
-            symbols = {
-                hint = "",
-                info = "",
-                warn = "",
-                error = "",
-            },
-        },
-    },
-
-    window = {
-        position = "right",
-        width = 36,
-    },
+		diagnostics = {
+			symbols = {
+				hint = "",
+				info = "",
+				warn = "",
+				error = "",
+			},
+		},
+	},
 })

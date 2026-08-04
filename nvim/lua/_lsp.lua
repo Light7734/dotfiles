@@ -1,3 +1,9 @@
+vim.filetype.add({
+	extension = {
+		svx = "markdown", -- Maps .svx to markdown for highlighting and formatting purposes
+	},
+})
+
 vim.diagnostic.config({
 	update_in_insert = false,
 	severity_sort = true,
@@ -69,7 +75,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
 		-- When you move your cursor, the highlights will be cleared (the second autocommand).
 		local client = vim.lsp.get_client_by_id(event.data.client_id)
 		if client and client:supports_method("textDocument/documentHighlight", event.buf) then
-			local highlight_augroup = vim.api.nvim_create_augroup("custom-lsp-highlight", { clear = false })
+			local highlight_augroup = vim.api.nvim_create_augroup("kickstart-lsp-highlight", { clear = false })
 			vim.api.nvim_create_autocmd({ "CursorHold", "CursorHoldI" }, {
 				buffer = event.buf,
 				group = highlight_augroup,
@@ -109,17 +115,34 @@ local schemastore = require("schemastore")
 --  See `:help lsp-config` for information about keys and how to configure
 ---@type table<string, vim.lsp.Config>
 local servers = {
-	cmakelang = {},
-	clangd = {},
-	pyright = {},
-	rust_analyzer = {},
-	shellcheck = {},
-	shfmt = {},
-	["cmake-language-server"] = {},
 	["bash-language-server"] = {},
-	ts_ls = {}, -- TODO: read https://github.com/pmizio/typescript-tools.nvim
-	stylua = {}, -- Used to format Lua code
-	jsonls = {
+	["clangd"] = {},
+	["cmake-language-server"] = {},
+	["cmakelang"] = {},
+	["css-lsp"] = {},
+	["emmet-language-server"] = {},
+	["esbonio"] = {},
+	["eslint-lsp"] = {},
+	["html-lsp"] = {},
+	["ltex-ls-plus"] = {},
+	["marksman"] = {},
+	["mdx-analyzer"] = {},
+	["prettierd"] = {},
+	["prosemd-lsp"] = {},
+	["pyright"] = {},
+	["remark-cli"] = {},
+	["remark-language-server"] = {},
+	["rstcheck"] = {},
+	["rust-analyzer"] = {},
+	["shellcheck"] = {},
+	["shfmt"] = {},
+	["stylua"] = {},
+	["svelte-language-server"] = {},
+	["tailwindcss-language-server"] = {},
+	["typescript-language-server"] = {},
+	["vscode-java-dependency"] = {},
+	["vtsls"] = {},
+	["json-lsp"] = {
 		settings = {
 			json = {
 				schemas = schemastore.json.schemas(),
@@ -127,7 +150,7 @@ local servers = {
 			},
 		},
 	},
-	yamlls = {
+	["yaml-language-server"] = {
 		settings = {
 			yaml = {
 				schemaStore = {
@@ -142,7 +165,7 @@ local servers = {
 		},
 	},
 	-- Special Lua Config, as recommended by neovim help docs
-	lua_ls = {
+	["lua-language-server"] = {
 		on_init = function(client)
 			client.server_capabilities.documentFormattingProvider = false -- Disable formatting (formatting is done by stylua)
 
