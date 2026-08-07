@@ -3,44 +3,22 @@
 -- up But mini.indentscope works properly yet doesn't provide the other inactive indentline lines,
 -- hence we use both.
 
-require("ibl").setup({
+local status_ok, hlchunk = pcall(require, "hlchunk")
+if not status_ok then
+	return
+end
+
+hlchunk.setup({
 	indent = {
-		char = "▏",
-		tab_char = "▏",
-	},
-	scope = {
-		enabled = false,
-	},
-	exclude = {
-		filetypes = {
-			"help",
-			"alpha",
-			"dashboard",
-			"neo-tree",
-			"Trouble",
-			"lazy",
-			"mason",
+		enable = true,
+		chars = {
+			" ",
+			"▏",
+			"▏",
+			"▏",
+			"▏",
+			"too many scopes :(",
 		},
+		-- ...
 	},
-})
-
-vim.api.nvim_set_hl(0, "MiniIndentscopeSymbol", { link = "DiagnosticError" })
-require("mini.indentscope").setup({
-	symbol = "▏",
-	options = {
-		try_as_border = true,
-		indent_at_cursor = true,
-	},
-	draw = {
-		delay = 0,
-		-- Disable animations to make it snappy
-		animation = require("mini.indentscope").gen_animation.none(),
-	},
-})
-
-vim.api.nvim_create_autocmd("FileType", {
-	pattern = { "help", "alpha", "dashboard", "neo-tree", "Trouble", "lazy", "mason" },
-	callback = function()
-		vim.b.miniindentscope_disable = true
-	end,
 })

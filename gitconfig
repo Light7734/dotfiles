@@ -1,0 +1,14 @@
+[user]
+	email = light7734@tuta.io
+	name = light7734
+	signingkey = B12B0E7DD9A1A0E9
+[core]
+	editor = nvim
+    pager = delta
+[interactive]
+    diffFilter = delta --color-only
+[delta]
+    navigate = true
+    dark = true
+[merge]
+    conflictStyle = zdiff3

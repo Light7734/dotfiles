@@ -40,6 +40,10 @@
       "rev": "154eb5ff5b96d0641307113fa385eaf0d36d9796",
       "src": "https://github.com/ellisonleao/gruvbox.nvim"
     },
+    "hlchunk.nvim": {
+      "rev": "fb5a16ecc4ff15772189679ffdede6ee879288ec",
+      "src": "https://github.com/shellRaining/hlchunk.nvim"
+    },
     "indent-blankline.nvim": {
       "rev": "d28a3f70721c79e3c5f6693057ae929f3d9c0a03",
       "src": "https://github.com/lukas-reineke/indent-blankline.nvim"

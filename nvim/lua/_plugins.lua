@@ -14,7 +14,6 @@ vim.pack.add({
 	{ src = gh("nvim-telescope/telescope-ui-select.nvim") },
 
 	-- Aesthetics
-	{ src = gh("lukas-reineke/indent-blankline.nvim") },
 	{ src = gh("nvim-treesitter/nvim-treesitter"), version = "main" },
 	{ src = gh("nvim-lualine/lualine.nvim") },
 	{ src = gh("ellisonleao/gruvbox.nvim") },
@@ -22,6 +21,7 @@ vim.pack.add({
 	{ src = gh("goolord/alpha-nvim") },
 	{ src = gh("folke/todo-comments.nvim") },
 	{ src = gh("j-hui/fidget.nvim") },
+	{ src = gh("shellRaining/hlchunk.nvim") },
 
 	-- Completion
 	{ src = gh("saghen/blink.cmp") },

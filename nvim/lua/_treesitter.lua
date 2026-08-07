@@ -1,3 +1,7 @@
+local parser = require("nvim-treesitter.parsers").cpp
+parser.install_info.branch = "main"
+parser.install_info.revision = nil
+
 local status_ok, treesitter = pcall(require, "nvim-treesitter")
 if not status_ok then
 	print("Failed to load plugin: nvim-treesitter")
@@ -20,7 +24,7 @@ local function treesitter_try_attach(buf, language)
 	-- Enable treesitter based folds
 	-- For more info on folds see `:help folds`
 	-- vim.wo.foldexpr = 'v:lua.vim.treesitter.foldexpr()'
-	-- vim.wo.foldmethod = 'expr'
+	-- vim.wo.foldmethod = 'expr'tre
 
 	-- Check if treesitter indentation is available for this language, and if so enable it
 	-- in case there is no indent query, the indentexpr will fallback to the vim's built in one

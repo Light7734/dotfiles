@@ -16,7 +16,7 @@ vim.opt.wrap = false
 vim.opt.scrolloff = 6
 vim.opt.sidescrolloff = 6
 vim.opt.showmode = false
-vim.opt.colorcolumn = "100"
+vim.opt.colorcolumn = "0"
 vim.opt.expandtab = true
 vim.opt.shiftwidth = 4
 vim.opt.tabstop = 4
@@ -25,7 +25,8 @@ vim.opt.showtabline = 0
 vim.opt.cursorline = false
 vim.opt.numberwidth = 4
 vim.opt.shortmess:append("c")
-vim.opt.laststatus = 1
+vim.opt.laststatus = 3
+vim.opt.fillchars = { eob = " " }
 vim.cmd('let g:neovide_cursor_vfx_mode = "pixiedust"')
 vim.cmd("let g:neovide_cursor_vfx_particle_density = 32.0")
 vim.diagnostic.config({ virtual_text = false, virtual_lines = { current_line = false } })

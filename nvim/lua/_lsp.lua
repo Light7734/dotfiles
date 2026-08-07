@@ -159,7 +159,7 @@ local servers = {
 		},
 	},
 	-- Special Lua Config, as recommended by neovim help docs
-	["lua-language-server"] = {
+	["lua_ls"] = {
 		on_init = function(client)
 			client.server_capabilities.documentFormattingProvider = false -- Disable formatting (formatting is done by stylua)
 
