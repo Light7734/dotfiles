@@ -21,5 +21,7 @@ require("_gitsigns")
 require("_treesitter")
 require("_indentline")
 require("_todo_comments")
-require("_gruvbox")
 require("_mini")
+require("_fidget")
+
+require("_gruvbox")

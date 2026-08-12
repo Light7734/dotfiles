@@ -1,3 +1,9 @@
+vim.filetype.add({
+	extension = {
+		mdx = "mdx",
+	},
+})
+
 vim.diagnostic.config({
 	update_in_insert = false,
 	severity_sort = true,
@@ -40,11 +46,7 @@ vim.diagnostic.config({
 vim.api.nvim_create_autocmd("LspAttach", {
 	group = vim.api.nvim_create_augroup("kickstart-lsp-attach", { clear = true }),
 	callback = function(event)
-		-- NOTE: Remember that Lua is a real programming language, and as such it is possible
-		-- to define small helper and utility functions so you don't have to repeat yourself.
-		--
-		-- In this case, we create a function that lets us more easily define mappings specific
-		-- for LSP related items. It sets the mode, buffer and description for us each time.
+		-- Create a function that lets us more easily define mappings specific for LSP related items. It sets the mode, buffer and description for us each time.
 		local map = function(keys, func, desc, mode)
 			mode = mode or "n"
 			vim.keymap.set(mode, keys, func, { buffer = event.buf, desc = "LSP: " .. desc })
@@ -103,10 +105,9 @@ vim.api.nvim_create_autocmd("LspAttach", {
 	end,
 })
 
-local schemastore = require("schemastore")
--- Enable the following language servers
---  Feel free to add/remove any LSPs that you want here. They will automatically be installed.
---  See `:help lsp-config` for information about keys and how to configure
+require("mason").setup({})
+require("mason-lspconfig").setup({ automatic_enable = true })
+
 ---@type table<string, vim.lsp.Config>
 local servers = {
 	["bash-language-server"] = {},
@@ -114,11 +115,10 @@ local servers = {
 	["cmake-language-server"] = {},
 	["cmakelang"] = {},
 	["css-lsp"] = {},
-	["emmet-language-server"] = {},
+	-- ["emmet-language-server"] = {},
 	["esbonio"] = {},
 	["eslint-lsp"] = {},
 	["html-lsp"] = {},
-	["ltex-ls-plus"] = {},
 	["marksman"] = {},
 	["mdx-analyzer"] = {},
 	["prettierd"] = {},
@@ -139,7 +139,7 @@ local servers = {
 	["json-lsp"] = {
 		settings = {
 			json = {
-				schemas = schemastore.json.schemas(),
+				schemas = require("schemastore").json.schemas(),
 				validate = { enable = true },
 			},
 		},
@@ -195,19 +195,22 @@ local servers = {
 			Lua = { format = { enable = false } }, -- Formatting is done by stylua
 		},
 	},
+
+	["astro"] = {
+		init_options = {
+			typescript = {
+				tsdk = vim.fn.expand("$MASON/packages/typescript-language-server/node_modules/typescript/lib"),
+			},
+		},
+	},
 }
-
-local ensure_installed = vim.tbl_keys(servers or {})
-vim.list_extend(ensure_installed, {
-	-- You can add other tools here that you want Mason to install
-})
-
-require("fidget").setup({})
-require("mason").setup({})
-require("mason-lspconfig").setup({ automatic_enable = true })
-require("mason-tool-installer").setup({ ensure_installed = ensure_installed })
+require("mason-tool-installer").setup({ ensure_installed = vim.tbl_keys(servers or {}) })
 
 for name, server in pairs(servers) do
+	-- if next(server) == nil then
+	-- 	goto continue
+	-- end
+
 	vim.lsp.config(name, server)
-	vim.lsp.enable(name)
+	::continue::
 end

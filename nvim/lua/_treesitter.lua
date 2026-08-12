@@ -4,7 +4,7 @@ parser.install_info.revision = nil
 
 local status_ok, treesitter = pcall(require, "nvim-treesitter")
 if not status_ok then
-	print("Failed to load plugin: nvim-treesitter")
+	vim.notify("Failed to load plugin: nvim-treesitter" .. debug.traceback(), vim.log.levels.ERROR)
 	return
 end
 

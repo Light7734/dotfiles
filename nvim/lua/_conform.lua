@@ -1,6 +1,6 @@
 local status_ok, conform = pcall(require, "conform")
 if not status_ok then
-	print("Failed to load plugin: conform")
+	vim.notify("Failed to load plugin: conform" .. debug.traceback(), vim.log.levels.ERROR)
 	return
 end
 

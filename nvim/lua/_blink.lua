@@ -1,6 +1,6 @@
 local status_ok, blink = pcall(require, "blink.cmp")
 if not status_ok then
-	print("Failed to load module: blink")
+	vim.notify("Failed to load module: blink" .. debug.traceback(), vim.log.levels.ERROR)
 	return
 end
 
