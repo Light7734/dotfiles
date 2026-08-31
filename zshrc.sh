@@ -4,8 +4,6 @@ HISTFILE=~/.zshhist             # Save history file
 HISTSIZE=10000                  # Save history zsh max lines
 SAVEHIST=10000                  # Save history file max lines
 
-source $ZSH/oh-my-zsh.sh
-
 setopt autocd appendhistory sharehistory incappendhistory hist_ignore_dups
 unsetopt beep notify               # No bells >:C !
 bindkey -v                        # Use VI Keybindings
@@ -15,21 +13,6 @@ bindkey '^[[1;5A' up-line-or-history
 bindkey '^[[1;5B' down-line-or-history
 
 source <(fzf --zsh) # CTRL + R for fuzzy history finder
-
-ZSH="$HOME/.oh-my-zsh"
-export ZSH
-plugins=(
-    git
-    sudo
-    web-search
-    archlinux
-    zsh-autosuggestions
-    fast-syntax-highlighting
-    copyfile
-    copybuffer
-    dirhistory
-)
-
 
 # Exports
 LC_ALL="C"
